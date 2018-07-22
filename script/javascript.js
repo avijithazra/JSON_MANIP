@@ -1,10 +1,15 @@
 (function () {
   "use strict";
 
+  document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundImage = "url('../resource/bgimg.jpg')";
+  document.body.style.backgroundSize = "cover";
+
+
   var d2 = document.createElement("div");
   d2.setAttribute("id", "input");
   document.getElementById("mainContainer").appendChild(d2);
+
   document.getElementById("input").style.backgroundColor = "#007ACC";
   document.getElementById("input").style.width = "30%";
 
@@ -18,12 +23,52 @@
 
   var name = document.createTextNode("New Task");
   document.getElementById("head").appendChild(name);
-  
-  var inbx = document.createElement("input");
-  inbx.setAttribute("id", "name");
-  document.getElementById("body").appendChild(inbx);
+
+  var labelName = document.createElement("LABEL");
+  labelName.appendChild(document.createTextNode("Name of Task: "));
+  document.getElementById("body").appendChild(labelName);
+
+  var inName = document.createElement("input");
+  inName.setAttribute("id", "name");
+  document.getElementById("body").appendChild(inName);
   var taskName = document.getElementById("name").value;
 
+  var br = document.createElement("BR");
+  document.getElementById("body").appendChild(br);
+
+  var labelTime = document.createElement("LABEL");
+  labelTime.appendChild(document.createTextNode("Time: "));
+  document.getElementById("body").appendChild(labelTime);
+
+  var inTime = document.createElement("input");
+  inTime.setAttribute("id", "time");
+  inTime.setAttribute("type", "datetime-local");
+  document.getElementById("body").appendChild(inTime);
+  var taskTime = document.getElementById("time").value;
+  document.getElementById("time").style.cssFloat = "right";
+
+  var snd = document.createElement("BUTTON");
+  snd.setAttribute("id", "btnsnd");
+  snd.innerHTML = "Save";
+  document.getElementById("body").appendChild(br);
+  document.getElementById("body").appendChild(snd);
+  document.getElementById("btnsnd").style.margin = "10px";
+  //document.getElementById("btnsnd").style.cssFloat = "right";
+
+  function writeJSON(){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "../json_file/new.json";
+    xmlhttp.open("POST", url, true);
+    //xmlhttp.setRequestHeader("Content-type", "application/json");
+    xmlhttp.onreadystatechange = function () { 
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var json = JSON.parse(xmlhttp.responseText);
+            console.log("gg");
+        }
+    }
+    var data = JSON.stringify({"email":"tomb@raider.com","name":"LaraCroft"});
+    xmlhttp.send(data);
+  }
 
   function readJSON(callback) {
     var xmlhttp = new XMLHttpRequest();
@@ -43,6 +88,8 @@
     var x = document.createElement("TABLE");
     x.setAttribute("id", "myTable");
     document.getElementById("mainContainer").appendChild(x);
+    document.getElementById("myTable").style.cssFloat = "right";
+
     var obj = JSON.parse(jsn);
     var thr = document.createElement("tr");
     document.getElementById("myTable").appendChild(thr);
@@ -71,6 +118,7 @@
 
   window.Init = function () {
     readJSON();
+    writeJSON();
   };
 
   Init();
