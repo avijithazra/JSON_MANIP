@@ -46,29 +46,15 @@
   document.getElementById("body").appendChild(inTime);
   var taskTime = document.getElementById("time").value;
   document.getElementById("time").style.cssFloat = "right";
-
+  var br2 = document.createElement("BR");
+  document.getElementById("body").appendChild(br2);
   var snd = document.createElement("BUTTON");
   snd.setAttribute("id", "btnsnd");
   snd.innerHTML = "Save";
-  document.getElementById("body").appendChild(br);
+
   document.getElementById("body").appendChild(snd);
   document.getElementById("btnsnd").style.margin = "10px";
   //document.getElementById("btnsnd").style.cssFloat = "right";
-
-  function writeJSON(){
-    var xmlhttp = new XMLHttpRequest();
-    var url = "../json_file/new.json";
-    xmlhttp.open("POST", url, true);
-    //xmlhttp.setRequestHeader("Content-type", "application/json");
-    xmlhttp.onreadystatechange = function () { 
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var json = JSON.parse(xmlhttp.responseText);
-            console.log("gg");
-        }
-    }
-    var data = JSON.stringify({"email":"tomb@raider.com","name":"LaraCroft"});
-    xmlhttp.send(data);
-  }
 
   function readJSON(callback) {
     var xmlhttp = new XMLHttpRequest();
@@ -118,7 +104,7 @@
 
   window.Init = function () {
     readJSON();
-    writeJSON();
+    
   };
 
   Init();
