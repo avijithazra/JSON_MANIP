@@ -1,0 +1,40 @@
+body{
+    background-image: url(../resource/bgimg.jpg);
+    background-repeat: no-repeat;
+    background-Size : cover;
+}
+
+div#input{
+    background-color: rgba(0, 172, 234, 0.384);
+    width: 500px;
+    margin: 10px;
+}
+
+div#title{
+    background-color: rgba(0, 172, 234, 0.76);
+    height: 30%;
+    padding: 5px;
+}
+
+div#data{
+    padding: 5px;
+    width: 100%;
+}
+
+div.newTask{
+    width: 100%;
+    padding: 10px;
+}
+
+label{
+    display: inline-block;
+    width: 30%;
+}
+
+#nwTaskDateTime, #nwTaskName{
+    width: 60%;
+}
+
+#save{
+    margin-left: 422px;
+}
