@@ -2,6 +2,7 @@ body{
     background-image: url(../resource/bgimg.jpg);
     background-repeat: no-repeat;
     background-Size : cover;
+    padding: 10px;
 }
 
 div#input{
@@ -28,10 +29,15 @@ div.newTask{
     padding: 10px;
 }
 
-label{
+label, input{
+    margin: 5px;
+}
+
+label.inputLabel{
     display: inline-block;
     width: 30%;
 }
+
 
 #nwTaskDateTime, #nwTaskName{
     width: 60%;
@@ -43,9 +49,13 @@ label{
 
 div#toDo{
     background-color: rgba(0, 172, 234, 0.384);
-    width: 500px;
+    width: 600px;
     margin: 10px;
     position: relative;
     top: 200px;
     float: right;
+}
+
+div#list>div{
+    display: inline;
 }
