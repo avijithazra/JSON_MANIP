@@ -9,23 +9,27 @@
     var newTaskName = document.getElementById("nwTaskName").value;
     var newTaskDateTime = document.getElementById("nwTaskDateTime").value;
 
-    document.getElementById("nwTaskName").value = "";
-    document.getElementById("nwTaskDateTime").value = "";
+    if((newTaskName != null && newTaskName != "") &&  (newTaskDateTime != null && newTaskDateTime != "")){
+      document.getElementById("nwTaskName").value = "";
+      document.getElementById("nwTaskDateTime").value = "";
 
-    if (typeof (localStorage["toDo"]) == "undefined") {
-      allToDo = {};
-    } else {
-      allToDo = JSON.parse(localStorage["toDo"]);
-    }
+      if (typeof (localStorage["toDo"]) == "undefined") {
+        allToDo = {};
+      } else {
+        allToDo = JSON.parse(localStorage["toDo"]);
+      }
 
-    var y = {};
-    y[newTaskName] = { newTaskDateTime };
+      var y = {};
+      y[newTaskName] = { newTaskDateTime };
 
-    allToDo = Object.assign(allToDo, y);
+      allToDo = Object.assign(allToDo, y);
 
-    localStorage["toDo"] = JSON.stringify(allToDo);
+      localStorage["toDo"] = JSON.stringify(allToDo);
 
-    readData();
+      readData();
+      } else{
+        alert("Data Needed");
+      }
   }
 
   var x = 10;
