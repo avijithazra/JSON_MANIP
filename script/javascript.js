@@ -32,30 +32,23 @@
       }
   }
 
-  var x = 10;
-
   function readData() {
     if (typeof (localStorage["toDo"]) == "undefined") {
       allToDo = {};
-      x = 0;
       var noToDo = document.createElement("div");
       var noToDoText = document.createTextNode("No To Do in List");
       noToDo.appendChild(noToDoText);
       document.getElementById("list").appendChild(noToDo);
     } else {
-      
       allToDo = JSON.parse(localStorage["toDo"]);
-      if (x == 0) {
-        document.getElementById("list").innerHTML = "";
-      }
       write(allToDo);
     }
   }
 
   function write(obj) {
+    document.getElementById("list").innerHTML = "";
     for (var data in obj) {
       if (obj.hasOwnProperty(data)) {
-
         var nm = document.createElement("div");
         var tm = document.createElement("div");
 
@@ -72,6 +65,8 @@
 
         var inNm = document.createElement("input");
         document.getElementById("taskName" + dataId).appendChild(inNm);
+        inNm.setAttribute("id", "nameShow" + dataId);
+        document.getElementById("nameShow" + dataId).disabled = true;
         inNm.value = data;
 
         var labelTm = document.createElement("label");
@@ -80,6 +75,8 @@
 
         var inTm = document.createElement("input");
         document.getElementById("taskTime" + dataId).appendChild(inTm);
+        inTm.setAttribute("id", "timeShow" + dataId);
+        document.getElementById("timeShow" + dataId).disabled = true;
         inTm.value = obj[data]["newTaskDateTime"];
 
       }
