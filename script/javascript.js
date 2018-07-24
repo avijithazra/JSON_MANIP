@@ -39,10 +39,10 @@
       noToDo.appendChild(noToDoText);
       document.getElementById("list").appendChild(noToDo);
     } else {
-      debugger;
+      
       allToDo = JSON.parse(localStorage["toDo"]);
       if (x == 0) {
-        document.getElementById("list").removeChild(noToDo);
+        document.getElementById("list").innerHTML = "";
       }
       write(allToDo);
     }
