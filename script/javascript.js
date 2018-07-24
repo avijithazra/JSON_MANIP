@@ -25,21 +25,24 @@
 
     localStorage["toDo"] = JSON.stringify(allToDo);
 
-    write(allToDo);
+    readData();
   }
+
+  var x = 10;
 
   function readData() {
     if (typeof (localStorage["toDo"]) == "undefined") {
       allToDo = {};
-      var x = 0;
+      x = 0;
       var noToDo = document.createElement("div");
       var noToDoText = document.createTextNode("No To Do in List");
       noToDo.appendChild(noToDoText);
       document.getElementById("list").appendChild(noToDo);
     } else {
+      debugger;
       allToDo = JSON.parse(localStorage["toDo"]);
-      if (x != undefined) {
-        noToDo.removeChild(noToDoText);
+      if (x == 0) {
+        document.getElementById("list").removeChild(noToDo);
       }
       write(allToDo);
     }
