@@ -6,11 +6,10 @@ body{
 }
 
 div#input{
-    background-color: rgba(0, 172, 234, 0.384);
+    background-color: rgba(0, 172, 234, 0.7 );
     width: 500px;
     margin: 10px;
     position: absolute;
-    top: 20%;
 }
 
 div.title{
@@ -57,5 +56,9 @@ div#toDo{
 }
 
 div#list>div{
+    border: 1px solid blanchedalmond;
+}
+
+div#list>div>div{
     display: inline;
 }

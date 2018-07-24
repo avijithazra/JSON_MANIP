@@ -49,15 +49,20 @@
     document.getElementById("list").innerHTML = "";
     for (var data in obj) {
       if (obj.hasOwnProperty(data)) {
+        var dataId = data.replace(/\s+/g, "");
+        var fullDiv = document.createElement("div");
+        fullDiv.setAttribute("id", dataId);
+        document.getElementById("list").appendChild(fullDiv);
+
+        document.getElementById(dataId).onclick = editDelete;
+
         var nm = document.createElement("div");
         var tm = document.createElement("div");
 
-        var dataId = data.replace(/\s+/g, "");
-
         nm.setAttribute("id", "taskName" + dataId);
         tm.setAttribute("id", "taskTime" + dataId);
-        document.getElementById("list").appendChild(nm);
-        document.getElementById("list").appendChild(tm);
+        document.getElementById(dataId).appendChild(nm);
+        document.getElementById(dataId).appendChild(tm);
 
         var labelNm = document.createElement("label");
         labelNm.appendChild(document.createTextNode("Name of Task: "));
@@ -79,6 +84,18 @@
         document.getElementById("timeShow" + dataId).disabled = true;
         inTm.value = obj[data]["newTaskDateTime"];
 
+      }
+    }
+  }
+
+  function editDelete(){
+    var dlt = confirm("Do you Want to Delete?");
+    if(dlt) {
+      
+    } else{
+      var edt = confirm("Do you Want to Edit?");
+      if(edt) {
+      
       }
     }
   }
