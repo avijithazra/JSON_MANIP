@@ -9,11 +9,11 @@
     var newTaskName = document.getElementById("nwTaskName").value;
     var newTaskDateTime = document.getElementById("nwTaskDateTime").value;
 
-    if((newTaskName != null && newTaskName != "") &&  (newTaskDateTime != null && newTaskDateTime != "")){
+    if ((newTaskName != null && newTaskName != "") && (newTaskDateTime != null && newTaskDateTime != "")) {
       document.getElementById("nwTaskName").value = "";
       document.getElementById("nwTaskDateTime").value = "";
 
-      if (typeof (localStorage["toDo"]) == "undefined") {
+      if (typeof (localStorage["toDo"]) === "undefined") {
         allToDo = {};
       } else {
         allToDo = JSON.parse(localStorage["toDo"]);
@@ -23,21 +23,20 @@
       y[newTaskName] = { newTaskDateTime };
 
       allToDo = Object.assign(allToDo, y);
-
       localStorage["toDo"] = JSON.stringify(allToDo);
-
       readData();
-      } else{
-        alert("Data Needed");
-      }
+    } else {
+      alert("Data Needed");
+    }
   }
 
   function readData() {
-    if (typeof (localStorage["toDo"]) == "undefined") {
+    if (typeof (localStorage["toDo"]) === "undefined" || localStorage["toDo"] === "{}") {
       allToDo = {};
       var noToDo = document.createElement("div");
       var noToDoText = document.createTextNode("No To Do in List");
       noToDo.appendChild(noToDoText);
+      document.getElementById("list").innerHTML = "";
       document.getElementById("list").appendChild(noToDo);
     } else {
       allToDo = JSON.parse(localStorage["toDo"]);
@@ -54,18 +53,7 @@
         fullDiv.setAttribute("id", dataId);
         document.getElementById("list").appendChild(fullDiv);
 
-        var x = document.getElementById(dataId).id;
-        document.getElementById(dataId).onclick = function editDelete(){
-          var dlt = confirm("Do you Want to Delete?");
-          if(dlt) {
-            
-          } else{
-            var edt = confirm("Do you Want to Edit?");
-            if(edt) {
-            
-            }
-          }
-        };
+        document.getElementById(dataId).onclick = editDelete;
 
         var nm = document.createElement("div");
         var tm = document.createElement("div");
@@ -98,7 +86,25 @@
     }
   }
 
-  
+  function editDelete() {
+    var tempId = this.id;
+    var dlt = confirm("Do you Want to Delete " + tempId + "?");
+    if (dlt) {
+      var temp = JSON.parse(localStorage.toDo);
+      delete temp[tempId];
+      localStorage.toDo = JSON.stringify(temp);
+      readData();
+    } else {
+      var edt = confirm("Do you Want to Edit " + tempId + "?");
+      if (edt) {
+        var temp = JSON.parse(localStorage.toDo);
+        document.getElementById("nwTaskName").value = tempId;
+        document.getElementById("nwTaskDateTime").value = temp[tempId]["newTaskDateTime"];
+        delete temp[tempId];
+        localStorage.toDo = JSON.stringify(temp);
+      }
+    }
+  };
 
   //View Json Data
   // function write(jsn) {
