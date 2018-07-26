@@ -1,15 +1,16 @@
 body{
-    background-image: url(../resource/bgimg.jpg);
-    background-repeat: no-repeat;
-    background-Size : cover;
-    padding: 10px;
+    background: url(../resource/bgimg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
 }
 
 div#input{
     background-color: rgba(0, 172, 234, 0.7 );
-    width: 500px;
     margin: 10px;
-    position: absolute;
+    padding: 0px !important;
 }
 
 div.title{
@@ -34,31 +35,35 @@ label, input{
 
 label.inputLabel{
     display: inline-block;
-    width: 30%;
+    width: 35%;
 }
-
 
 #nwTaskDateTime, #nwTaskName{
     width: 60%;
 }
 
 #save{
-    margin-left: 422px;
+    margin-left: 80%;
 }
 
 div#toDo{
-    background-color: rgba(0, 172, 234, 0.384);
-    width: 600px;
+    background-color: rgba(255, 255, 240, 0.9);
     margin: 10px;
-    position: relative;
-    top: 200px;
-    float: right;
+    padding: 0px !important;
 }
 
 div#list>div{
-    border: 1px solid blanchedalmond;
+    border: 1px solid rgb(49, 32, 5);
 }
 
 div#list>div>div{
     display: inline;
+}
+
+.col-xs-12{
+    padding: 5px;
+}
+
+#mainContainer{
+    
 }

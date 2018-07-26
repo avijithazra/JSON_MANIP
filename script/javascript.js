@@ -52,6 +52,7 @@
         var fullDiv = document.createElement("div");
         fullDiv.setAttribute("id", dataId);
         document.getElementById("list").appendChild(fullDiv);
+        document.getElementById(dataId).style.width = "100%";
 
         document.getElementById(dataId).onclick = editDelete;
 
@@ -64,6 +65,7 @@
         document.getElementById(dataId).appendChild(tm);
 
         var labelNm = document.createElement("label");
+        labelNm.setAttribute("id","zz1" + dataId);
         labelNm.appendChild(document.createTextNode("Name of Task: "));
         document.getElementById("taskName" + dataId).appendChild(labelNm);
 
@@ -71,16 +73,23 @@
         document.getElementById("taskName" + dataId).appendChild(inNm);
         inNm.setAttribute("id", "nameShow" + dataId);
         document.getElementById("nameShow" + dataId).disabled = true;
+        document.getElementById("nameShow" + dataId).style.width = "55%";
         inNm.value = data;
 
         var labelTm = document.createElement("label");
+        labelTm.setAttribute("id","zz2" + dataId);
+
         labelTm.appendChild(document.createTextNode("Time of Task: "));
         document.getElementById("taskTime" + dataId).appendChild(labelTm);
+
+        document.getElementById("zz1" + dataId).style.width = "40%";
+        document.getElementById("zz2" + dataId).style.width = "40%";
 
         var inTm = document.createElement("input");
         document.getElementById("taskTime" + dataId).appendChild(inTm);
         inTm.setAttribute("id", "timeShow" + dataId);
         document.getElementById("timeShow" + dataId).disabled = true;
+        document.getElementById("timeShow" + dataId).style.width = "55%";
         inTm.value = obj[data]["newTaskDateTime"];
       }
     }
